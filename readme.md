@@ -8,4 +8,6 @@ https://github.com/jasontianxie/newProject-taopiaopiao-webpackIsomorphicTools.gi
 https://github.com/jasontianxie/newProject-taopiaopiao-universalWebpack.git
 
 运行
-npm run dev
+webpack --config "./config/webpack.config.client.babel.js"
+webpack --config "./config/webpack.config.server.babel.js"
+node ./source/start-server.js
