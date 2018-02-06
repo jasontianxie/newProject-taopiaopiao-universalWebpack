@@ -27,7 +27,7 @@ module.exports = {
     path: path.resolve(__dirname, '../public'),
     filename: 'bundle.[name].js',
     // filename:'[name].js',
-    publicPath: '/'
+    publicPath: ''
   },
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
@@ -38,16 +38,16 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.jsx?$/,
-      //   exclude: /node_modules/,
-      //   use: {
-      //     loader: 'babel-loader',
-      //     options: {
-      //       presets: ['env','react']
-      //     }
-      //   }
-      // },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: ['env','react']
+          }
+        }]
+      },
       { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       {
@@ -122,7 +122,7 @@ module.exports = {
   },
   plugins: [
     // extractSass,
-    new CleanWebpackPlugin(['public'], { root: path.resolve(__dirname, '..') }),
+    // new CleanWebpackPlugin(['public'], { root: path.resolve(__dirname, '..') }),
     new webpack.HotModuleReplacementPlugin(),
     // Use NoErrorsPlugin for webpack 1.x
     new webpack.NoEmitOnErrorsPlugin(),
@@ -139,7 +139,7 @@ module.exports = {
         // proxy the Webpack Dev Server endpoint 
         // (which should be serving on http://localhost:3100/) 
         // through BrowserSync 
-        proxy: 'http://127.0.0.1:3003/'
+        proxy: 'http://127.0.0.1:3005/'
       },
       // plugin options 
       {
